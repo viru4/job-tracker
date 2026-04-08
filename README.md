@@ -28,6 +28,14 @@ A modern full-stack Job Tracker web application to manage and visualize job appl
 
 ---
 
+## 🔗 Live Demo
+
+Once deployed on Netlify, add your live site link here:
+
+**Live App:** [Your Netlify URL](https://your-netlify-site-url.netlify.app)
+
+---
+
 ## ⚙️ Setup Instructions
 
 1. Clone the repo
@@ -50,6 +58,25 @@ A modern full-stack Job Tracker web application to manage and visualize job appl
    ```bash
    npm run dev
    ```
+
+---
+
+## 🌐 Deploy on Netlify
+
+This project is ready for Netlify deployment.
+
+1. Push your latest changes to GitHub.
+2. In Netlify, choose **Add new site** → **Import an existing project**.
+3. Connect your GitHub repo: `viru4/job-tracker`.
+4. Netlify will use the included [netlify.toml](netlify.toml) settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+5. Add environment variables in Netlify site settings:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+6. Deploy the site.
+
+For single-page app routing, the repo already includes a redirect rule to `index.html`.
 
 ---
 
