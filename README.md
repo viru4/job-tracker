@@ -1,16 +1,66 @@
-# React + Vite
+# 🚀 Job Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern full-stack Job Tracker web application to manage and visualize job applications efficiently.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* 📋 Add, update, and delete job applications
+* 🔍 Search and filter by company, role, status, and source
+* 📊 Dashboard with analytics (applications, interviews, offers, success rate)
+* 🧩 Kanban board (drag & drop) for pipeline tracking
+* 🏷️ Track application source (LinkedIn, Naukri, etc.) with custom input
+* 🎨 Responsive UI with modern design
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+* **Frontend:** React, TailwindCSS
+* **Backend:** Supabase (PostgreSQL + API)
+* **Drag & Drop:** @hello-pangea/dnd
+* **Icons:** lucide-react
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📸 Screenshots
+
+(Add screenshots here after deployment)
+
+---
+
+## ⚙️ Setup Instructions
+
+1. Clone the repo
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Add environment variables:
+
+   ```env
+   VITE_SUPABASE_URL=your_url
+   VITE_SUPABASE_ANON_KEY=your_key
+   ```
+
+4. Run the app:
+
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🚀 Future Improvements
+
+* 🔔 Email reminders for follow-ups
+* 🤖 AI resume matching
+* 🌐 Chrome extension for auto-saving jobs
+
+---
+
+## 💡 Author
+
+Built with 💻 by Virendra Kumar
