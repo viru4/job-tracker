@@ -32,7 +32,7 @@ A modern full-stack Job Tracker web application to manage and visualize job appl
 
 Once deployed on Netlify, add your live site link here:
 
-**Live App:** [Your Netlify URL](https://your-netlify-site-url.netlify.app)
+**Live App:** https://myjob-tracker.netlify.app/
 
 ---
 
