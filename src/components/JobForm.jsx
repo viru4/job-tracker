@@ -12,8 +12,22 @@ const initialFormState = {
 	notes: '',
 }
 
+const normalizeUrl = (value) => {
+	const trimmed = value.trim()
+	if (!trimmed) {
+		return ''
+	}
+
+	if (/^https?:\/\//i.test(trimmed)) {
+		return trimmed
+	}
+
+	return `https://${trimmed}`
+}
+
 function JobForm({ onAddJob, isAdding = false }) {
 	const [formData, setFormData] = useState(initialFormState)
+	const [linkError, setLinkError] = useState('')
 
 	const handleChange = (event) => {
 		const { name, value } = event.target
@@ -22,6 +36,7 @@ function JobForm({ onAddJob, isAdding = false }) {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault()
+		setLinkError('')
 		if (!formData.appliedVia || !formData.appliedVia.trim()) {
 			return
 		}
@@ -35,8 +50,19 @@ function JobForm({ onAddJob, isAdding = false }) {
 			return
 		}
 
+		const normalizedLink = normalizeUrl(formData.link)
+		if (normalizedLink) {
+			try {
+				new URL(normalizedLink)
+			} catch {
+				setLinkError('Please enter a valid job link.')
+				return
+			}
+		}
+
 		const payload = {
 			...formData,
+			link: normalizedLink,
 			appliedVia: finalSource,
 			applied_via: finalSource,
 		}
@@ -76,11 +102,12 @@ function JobForm({ onAddJob, isAdding = false }) {
 					/>
 
 					<input
-						type="url"
+						type="text"
 						name="link"
 						placeholder="Job Link"
 						value={formData.link}
 						onChange={handleChange}
+						inputMode="url"
 						className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none transition duration-200 placeholder:text-slate-400 focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-500/20 dark:border-slate-600 dark:bg-slate-800 dark:placeholder:text-slate-500"
 					/>
 
@@ -129,6 +156,10 @@ function JobForm({ onAddJob, isAdding = false }) {
 						className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none transition duration-200 focus-visible:border-blue-500 focus-visible:ring-4 focus-visible:ring-blue-500/20 dark:border-slate-600 dark:bg-slate-800"
 					/>
 				</div>
+
+				{linkError && (
+					<p className="text-sm text-rose-600 dark:text-rose-300">{linkError}</p>
+				)}
 
 				<textarea
 					name="notes"
