@@ -8,12 +8,13 @@ function Dashboard({ jobs = [] }) {
 			}
 			return acc
 		},
-		{ Applied: 0, Interview: 0, Offer: 0, Rejected: 0 },
+		Object.fromEntries(JOB_STATUSES.map((status) => [status, 0])),
 	)
 
 	const stats = {
 		total: jobs.length,
 		applied: statsByStatus.Applied,
+		shortlisted: statsByStatus.Shortlisted,
 		interview: statsByStatus.Interview,
 		offer: statsByStatus.Offer,
 		rejected: statsByStatus.Rejected,
@@ -60,6 +61,15 @@ function Dashboard({ jobs = [] }) {
 				'text-amber-700 bg-amber-100 dark:text-amber-200 dark:bg-amber-900/30',
 			border: 'border-amber-200/70 dark:border-amber-800/60',
 			dot: 'bg-amber-500',
+		},
+		{
+			id: 'shortlisted',
+			title: 'Shortlisted',
+			value: stats.shortlisted,
+			accent:
+				'text-sky-700 bg-sky-100 dark:text-sky-200 dark:bg-sky-900/30',
+			border: 'border-sky-200/70 dark:border-sky-800/60',
+			dot: 'bg-sky-500',
 		},
 		{
 			id: 'offer',

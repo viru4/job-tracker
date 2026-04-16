@@ -128,7 +128,7 @@ export default function JobTracker() {
 				),
 			)
 			addToast('Status updated.', 'success')
-		} catch {
+		} catch (err) {
 			if (previousStatus) {
 				setJobs((prevJobs) =>
 					prevJobs.map((job) =>
@@ -136,8 +136,10 @@ export default function JobTracker() {
 					),
 				)
 			}
-			setErrorMessage('Could not update status. Please try again.')
-			addToast('Could not update status. Please try again.', 'error')
+			const message =
+				err?.message || 'Could not update status. Please try again.'
+			setErrorMessage(message)
+			addToast(message, 'error')
 		}
 	}
 

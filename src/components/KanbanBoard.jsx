@@ -7,6 +7,10 @@ const columnStyles = {
 		container: 'bg-slate-100/80 border-slate-200 dark:bg-slate-800/50 dark:border-slate-700',
 		badge: 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200',
 	},
+	Shortlisted: {
+		container: 'bg-sky-50/80 border-sky-200 dark:bg-sky-950/20 dark:border-sky-800/60',
+		badge: 'bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-200',
+	},
 	Interview: {
 		container: 'bg-amber-50/80 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800/60',
 		badge: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-200',
@@ -24,6 +28,8 @@ const columnStyles = {
 const statusTagClasses = {
 	Applied:
 		'bg-slate-100 text-slate-700 ring-1 ring-inset ring-slate-300 dark:bg-slate-700/70 dark:text-slate-100 dark:ring-slate-600',
+	Shortlisted:
+		'bg-sky-100 text-sky-800 ring-1 ring-inset ring-sky-300 dark:bg-sky-900/40 dark:text-sky-200 dark:ring-sky-700/80',
 	Interview:
 		'bg-amber-100 text-amber-800 ring-1 ring-inset ring-amber-300 dark:bg-amber-900/40 dark:text-amber-200 dark:ring-amber-700/80',
 	Offer:
@@ -35,6 +41,7 @@ const statusTagClasses = {
 function KanbanBoard({ jobs = [], updateJobStatus }) {
 	const jobsByStatus = {
 		Applied: [],
+		Shortlisted: [],
 		Interview: [],
 		Offer: [],
 		Rejected: [],
@@ -146,6 +153,16 @@ function KanbanBoard({ jobs = [], updateJobStatus }) {
 																	<SourceIcon className="h-4 w-4" aria-hidden="true" />
 																	<span>{job.applied_via}</span>
 																</p>
+															)}
+															{job.notes && (
+																<details className="mt-2 rounded-md border border-slate-200 bg-slate-50/80 p-2 dark:border-slate-700 dark:bg-slate-800/70">
+																	<summary className="cursor-pointer text-xs font-medium text-slate-700 marker:text-slate-400 dark:text-slate-200 dark:marker:text-slate-500">
+																		View notes
+																	</summary>
+																	<p className="mt-2 whitespace-pre-wrap break-words text-xs text-slate-600 dark:text-slate-300">
+																		{job.notes}
+																	</p>
+																</details>
 															)}
 														</article>
 															)

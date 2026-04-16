@@ -4,6 +4,8 @@ import { getSourceIcon } from '../utils/sourceIcons'
 const statusClasses = {
 	Applied:
 		'bg-slate-100 text-slate-700 ring-1 ring-inset ring-slate-300 dark:bg-slate-700/70 dark:text-slate-100 dark:ring-slate-600',
+	Shortlisted:
+		'bg-sky-100 text-sky-800 ring-1 ring-inset ring-sky-300 dark:bg-sky-900/40 dark:text-sky-200 dark:ring-sky-700/80',
 	Interview:
 		'bg-amber-100 text-amber-800 ring-1 ring-inset ring-amber-300 dark:bg-amber-900/40 dark:text-amber-200 dark:ring-amber-700/80',
 	Offer:
@@ -76,9 +78,14 @@ function JobList({ jobs, deleteJob, updateJobStatus }) {
 						)}
 
 						{job.notes && (
-							<p className="mt-2 line-clamp-3 text-sm text-slate-600 dark:text-slate-300">
-								{job.notes}
-							</p>
+							<details className="mt-3 rounded-lg border border-slate-200 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/60">
+								<summary className="cursor-pointer text-sm font-medium text-slate-700 marker:text-slate-400 dark:text-slate-200 dark:marker:text-slate-500">
+									View notes
+								</summary>
+								<p className="mt-2 whitespace-pre-wrap break-words text-sm text-slate-600 dark:text-slate-300">
+									{job.notes}
+								</p>
+							</details>
 						)}
 
 						<div className="mt-4 flex items-center gap-2">
